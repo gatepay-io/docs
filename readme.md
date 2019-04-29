@@ -44,6 +44,8 @@ order: 1
 ## **后台截图**
 ![控制台](https://gatepay.gatecdn.com/static/thedocs/1.3.1/assets/img/banner_admin.png "控制台")
 
+## **Android App截图**
+![控制台](https://gatepay.gatecdn.com/assets/img/app.jpg "控制台")
 
 
 ## **版权信息**
