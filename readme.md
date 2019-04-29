@@ -24,7 +24,7 @@ order: 1
 
     
 
-## **GatePay收款**
+## **GatePay收款优点**
 
 * 实时到账
 
@@ -41,7 +41,7 @@ order: 1
 * 高效稳定不漏单
 
 
-## **后台截图**
+## **管理后台截图**
 ![控制台](https://gatepay.gatecdn.com/static/thedocs/1.3.1/assets/img/banner_admin.png "控制台")
 
 ## **Android App截图**
