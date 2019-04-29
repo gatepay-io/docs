@@ -6,7 +6,6 @@ order: 4
 
 
 ## 支付接口 
-
 | 接口名称   | 创建支付订单   |
 | --------- | ----- |
 | 接口URL    | https://gatepay.io/api/pay/create |
@@ -26,7 +25,6 @@ order: 4
 | sign         | string     | 是       | 签名信息算法：sign = md5（md5（appkey + product_id + product_num + pay_type + out_order_id + custom）+appsecret） |
 
 #### 返回结果表
-
 | 数据 | 说明 |
 | ---  | --- |
 | code | 状态码 |
@@ -39,7 +37,6 @@ order: 4
 | data.order_qrcode | 支付二维码 |
 
 #### 状态码表
-
 | 状态码 | 说明 |
 | ---- | ---- |
 | 100 | 成功 |
@@ -71,17 +68,190 @@ order: 4
 }
 ```
 
+## 产品接口
+| 接口名称 | 获取产品信息 |
+| ------- | ----------- |
+| 接口URL | https://gatepay.io/api/product/show |
+| 请求方式 | Post |
+| 返回格式 | JSON |
 
+#### 请求参数表
+| 名称 | 类型 | 必选 | 描述 |
+| --- | ---- | ---- | --- |
+| appkey | string | 是 | 秘钥 |
+| sign | string | 是 | 签名信息算法：sign = md5（md5（appkey）+appsecret） |
 
+#### 返回结果表
+| 数据 | 说明 |
+| ---  | --- |
+| code | 状态码 |
+| msg | 状态描述 |
+| time | 响应时间戳 |
+| data | 业务结果集 |
+| data.category | 产品类型 |
+| data.category.id | 产品类型编号 |
+| data.category.name | 产品类型名称 |
+| data.category.product | 产品信息 |
+| data.category.product.id | 产品编号 |
+| data.category.product.admin_id | 产品所属用户编号 |
+| data.category.product.category_id | 产品所属类型编号 |
+| data.category.product.name | 产品名称 |
+| data.category.product.description | 产品描述 |
+| data.category.product.image | 产品图片 |
+| data.category.product.price | 产品价格 |
+| data.category.product.stock | 产品库存 |
 
+#### 状态码表
+| 状态码 | 说明 |
+| ---- | ---- |
+| 100 | 成功 |
+| 101 | 参数不完整 |
+| 102 | 无效的秘钥 |
+| 103 | 签名失败 |
 
+#### 成功返回的结果例子
+```
+  {
+  "code": 100,
+  "msg": "请求成功",
+  "time": "1555773183",
+  "data": {
+    "category": [
+      {
+        "id": 39,
+        "name": "爱奇艺会员",
+        "product": [
+          {
+            "id": 4,
+            "admin_id": 6,
+            "category_id": 39,
+            "name": "爱奇艺牛逼号",
+            "description": "爱奇艺牛逼账号出售",
+            "image": "https://gatepay.gatecdn.com/uploads/20190414/51bf070aef0b51ea6c0597569a2a3f32.jpeg",
+            "price": "1.00",
+            "stock": 4
+          }
+        ]
+      },
+      {
+        "id": 40,
+        "name": "腾讯会员",
+        "product": [
+          {
+            "id": 5,
+            "admin_id": 6,
+            "category_id": 40,
+            "name": "腾讯视频稳定号",
+            "description": "腾讯视频稳定号",
+            "image": "https://gatepay.gatecdn.com/uploads/20190414/98095a716fe1de7ca364fac50408a260.jpg",
+            "price": "1.90",
+            "stock": 1
+          },
+          {
+            "id": 8,
+            "admin_id": 6,
+            "category_id": 40,
+            "name": "腾讯视频SVIP账号",
+            "description": "超强，什么都能看",
+            "image": "https://gatepay.gatecdn.com/uploads/20190415/2d169ca784ebfef2bc97f204b18ad80f.png",
+            "price": "0.99",
+            "stock": 89
+          }
+        ]
+      }
+    ]
+  }
+}
+```
 
+## 卡密接口
+| 接口名称 | 获取产品卡密 |
+| ------- | ----------- |
+| 接口URL | https://gatepay.io/api/ka/show |
+| 请求方式 | Post |
+| 返回格式 | JSON |
 
+#### 请求参数表
+| 名称 | 类型 | 必选 | 描述 |
+| ---- | --- | ---- | --- |
+| appkey | string | 是 | 秘钥 |
+| product_id | integer | 是 | 产品编号 |
+| page | integer | 是 | 第几页 |
+| sign | string | 是 | 签名信息算法：sign = md5（md5（appkey + product_id）+appsecret) |
 
+#### 返回结果表
+| 数据 | 说明 |
+| ---  | --- |
+| code | 状态码 |
+| msg | 状态描述 |
+| time | 响应时间戳 |
+| data | 业务结果集 |
+| data.ka | 产品卡密列表 |
+| data.ka.total | 产品卡密总数 |
+| data.ka.per_page | 每页显示卡密数量 |
+| data.ka.current_page | 当前页数 |
+| data.ka.last_page | 总页数 |
+| data.ka.data | 卡密详情 |
+| data.ka.data.id | 卡密编号 |
+| data.ka.data.admin_id | 商品编号 |
+| data.ka.data.pay_product_id | 商品编号 |
+| data.ka.data.pay_order_id | 订单编号 |
+| data.ka.data.content | 卡密内容 |
+| data.ka.data.create_at | 创建时间 |
+| data.ka.data.update_at | 更新时间 |
+| data.ka.data.status | 卡密状态 |
 
+#### 状态码表
+| 状态码 | 说明 |
+| ---- | ---- |
+| 100 | 成功 |
+| 101 | 参数不完整 |
+| 102 | 产品编号不合法 |
+| 103 | 产品不存在 |
+| 104 | 商铺不存在 |
+| 105 | 秘钥错误 |
+| 106 | 签名失败 |
+| 107 | 接口已关闭 |
+| 108 | 页数不合法 |
 
-
-
+#### 成功返回的结果例子
+```
+  {
+  "code": 100,
+  "msg": "请求成功",
+  "time": "1556251812",
+  "data": {
+    "ka": {
+      "total": 70,
+      "per_page": 50,
+      "current_page": 2,
+      "last_page": 2,
+      "data": [
+        {
+          "id": 1272,
+          "admin_id": 3,
+          "pay_product_id": 3,
+          "pay_order_id": 0,
+          "content": "asdfsafasdfsadf",
+          "createtime": 1556251520,
+          "updatetime": 1556251520,
+          "status": "soldin"
+        },
+        {
+          "id": 1273,
+          "admin_id": 3,
+          "pay_product_id": 3,
+          "pay_order_id": 0,
+          "content": "asdf",
+          "createtime": 1556251520,
+          "updatetime": 1556251520,
+          "status": "soldin"
+        }
+      ]
+    }
+  }
+}
+```
 
 
 
