@@ -18,12 +18,12 @@ order: 3
 | 名称         | 类型        | 必选     |  描述                                     |
 | ------------ | ---------- | -------- | ---------------------------------------- |
 | appkey       | string     | 是       | 秘钥                                      |
-| product_id   | integer    | 是       | 产品编号                                  |
+| price        | float      | 是       | 产品编号（精确小数点后2位 示例：10.23）     |
 | out_order_id | string     | 是       | 外部订单号                                |
 | product_num  | integer    | 是       | 购买产品数量                              |
 | pay_type     | string     | 是       | 支付类型 （wechat/alipay/onecode）        |
 | custom       | string     | 是       | 自定义信息:可以是用户的属性之类如用户ID,邮箱 |
-| sign         | string     | 是       | 签名信息算法：sign = md5（md5（appkey + product_id + product_num + pay_type + out_order_id + custom）+appsecret） |
+| sign         | string     | 是       | 签名信息算法：sign = md5（md5（appkey + price + product_num + pay_type + out_order_id + custom）+appsecret） |
 
 #### 返回结果表
 | 数据 | 说明 |
@@ -44,7 +44,7 @@ order: 3
 | 101 | 参数不完整 |
 | 102 | 无效的支付类型 |
 | 103 | 微信支付只能单件购买 |
-| 104 | 产品编号不合法 |
+| 104 | 产品价格需要大于0 |
 | 105 | 购买数量需要大于0 |
 | 106 | 产品信息不存在 |
 | 107 | 商铺信息不存在 |
@@ -53,6 +53,10 @@ order: 3
 | 110 | 有效库存不足 |
 | 111 | 商铺当日额度已用完 |
 | 112 | 商铺授权已过期 |
+| 113 | 下单失败 |
+| 114 | 未知错误 |
+| 115 | 没有选择收款方式 |
+| 116 | 接口已关闭 |
 
 #### 成功返回的结果例子
 ```
