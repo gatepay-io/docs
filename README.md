@@ -40,15 +40,6 @@ order: 1
 
 * 高效稳定不漏单
 
-## **在线演示**
-
-https://demo.fastadmin.net
-
-用户名：admin
-
-密　码：123456
-
-提　示：演示站数据无法进行修改，请下载源码安装体验全部功能
 
 ## **后台截图**
 ![控制台](https://gatepay.gatecdn.com/static/thedocs/1.3.1/assets/img/banner_admin.png "控制台")
