@@ -13,7 +13,7 @@ order: 4
 | 请求方式   | Post  |
 | 返回格式   | JSON  |
 
-###请求参数表
+#### 请求参数表
 
 | 名称         | 类型        | 必选     |  描述                                     |
 | ------------ | ---------- | -------- | ---------------------------------------- |
@@ -24,3 +24,24 @@ order: 4
 | pay_type     | string     | 是       | 支付类型 （wechat/alipay/onecode）        |
 | custom       | string     | 是       | 自定义信息:可以是用户的属性之类如用户ID,邮箱 |
 | sign         | string     | 是       | 签名信息算法：sign = md5（md5（appkey + product_id + product_num + pay_type + out_order_id + custom）+appsecret） |
+
+#### 返回结果表
+
+| 数据 | 说明 |
+| ---  | --- |
+| code | 状态码 |
+| msg | 状态描述 |
+| time | 响应时间戳 |
+| data | 业务结果集 |
+| data.order_type | 订单类型 |
+| data.order_price | 订单价格 |
+| data.order_url | 支付链接 |
+| data.order_qrcode | 支付二维码 |
+
+#### 状态码表
+
+| 状态码 | 说明 |
+| ---- | ---- |
+
+
+
