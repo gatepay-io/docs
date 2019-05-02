@@ -10,9 +10,10 @@ Hprose 序列化格式是一个轻量级、自描述、半文本、格式紧凑�
 
 
 ### PHP SDK
+详细教程及下载地址：[点击跳转](https://github.com/gatepay-io/gatepay.io-php)
 
 ### JavaScript SDK
-详细教程及下载地址：[点击跳转](https://github.com/gatepay-io/gatepay.io-php)
+详细教程及下载地址：[点击跳转](https://github.com/gatepay-io/gatepay.io-js)
 
 ### Go SDK
 
