@@ -54,7 +54,7 @@ gatepay.any(sign,function(response){
 });
 ```
 
-2.固定商品支付 stablepay,
+2. 固定商品支付 stablepay,
 
 这个主要的特点是，先要去管理后台->产品卡密->产品管理里创建一个产品，然后上传支付宝微信二维码。
 
