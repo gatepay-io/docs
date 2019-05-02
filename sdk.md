@@ -15,16 +15,16 @@ Hprose 序列化格式是一个轻量级、自描述、半文本、格式紧凑�
 ### JavaScript SDK
 详细教程及下载地址：[点击跳转](https://github.com/gatepay-io/gatepay.io-js)
 
-### Go SDK
+### Node.js SDK
 详细教程及下载地址：[点击跳转](https://github.com/gatepay-io/gatepay.io-node)
+
+### Go SDK
 
 ### Python SDK
 
 ### Ruby SDK
 
 ### Java SDK
-
-### Node.js SDK
 
 ### ASP SDK
 
