@@ -109,7 +109,6 @@ gatepay.group(sign,function(response){
     	}
 });
 ```
-详细教程及下载地址请跳转至：[https://github.com/gatepay-io/gatepay.io-php](https://github.com/gatepay-io/gatepay.io-php)
 
 ### Go SDK
 
