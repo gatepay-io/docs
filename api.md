@@ -280,8 +280,11 @@ order: 3
 | --- | ---- |
 || 快捷收款页面 |
 
-#### 例子
-(https://gatepay.io/pay/any?appkey=e3d704f3542b44a621ebed70dc0efe13&price=1.88&custom=lsq&skin=1&token=qflknfokn)[https://gatepay.io/pay/any?appkey=e3d704f3542b44a621ebed70dc0efe13&price=1.88&custom=lsq&skin=1&token=qflknfokn]
+#### 生成您的快捷付款页
+`http://gatepay.io/pay/any?appkey=后台自动生成的Appkey秘钥&price=收款金额&custom联系方式&skin=模板选择&token=您后台设置的token`
+具体参数描述，可以参看上方请求参数表
+#### 示例
+https://gatepay.io/pay/any?appkey=e3d704f3542b44a621ebed70dc0efe13&price=1.88&custom=lsq&skin=1&token=qflknfokn
 
 
 
