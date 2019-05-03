@@ -258,9 +258,9 @@ order: 3
 | fail | 回调失败 |
 
 
-## 快速集成接口
+## 快捷收款接口
 #### 接口概要
-| 接口名称 | 快速集成接口 |
+| 接口名称 | 快捷收款接口 |
 | ------- | ------------|
 | 接口URL | https://gatepay.io/pay/any |
 | 请求方式 | GET |
@@ -287,9 +287,8 @@ http://gatepay.io/pay/any?appkey=后台自动生成的Appkey秘钥&price=收款�
 具体参数描述，可以参看上方请求参数表
 
 #### 示例
-```
 https://gatepay.io/pay/any?appkey=e3d704f3542b44a621ebed70dc0efe13&price=1.88&custom=lsq&skin=1&token=qflknfokn
-```
+
 
 ![skin1](https://gatepay.io/assets/img/pay_any1.png)
 ![skin2](https://gatepay.io/assets/img/pay_any2.png)
