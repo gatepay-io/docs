@@ -258,7 +258,30 @@ order: 3
 | fail | 回调失败 |
 
 
+## 快速集成接口
+#### 接口概要
+| 接口名称 | 快速集成接口 |
+| ------- | ------------|
+| 接口URL | https://gatepay.io/pay/any |
+| 请求方式 | GET |
+| 返回格式 | html |
 
+#### 请求参数表
+| 名称 | 类型 | 必选 | 描述 |
+| ---- | --- | ---- | --- |
+| appkey | string | 是 | 秘钥 |
+| price | string | 是 | 金额 |
+| custom | string | 是 | 联系方式（用户名，邮箱，手机号之类的都可以） |
+| skin | string | 是 | 模板（暂时有1和2） |
+| token | string | 是 | 快捷收款令牌 |
+
+#### 返回结果表
+| 数据 | 说明 |
+| --- | ---- |
+|| 快捷收款页面 |
+
+#### 例子
+(https://gatepay.io/pay/any?appkey=e3d704f3542b44a621ebed70dc0efe13&price=1.88&custom=lsq&skin=1&token=qflknfokn)[https://gatepay.io/pay/any?appkey=e3d704f3542b44a621ebed70dc0efe13&price=1.88&custom=lsq&skin=1&token=qflknfokn]
 
 
 
