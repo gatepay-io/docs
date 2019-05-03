@@ -286,6 +286,9 @@ order: 3
 #### 示例
 https://gatepay.io/pay/any?appkey=e3d704f3542b44a621ebed70dc0efe13&price=1.88&custom=lsq&skin=1&token=qflknfokn
 
+![skin1](https://gatepay.io/assets/img/pay_any1.png)
+![skin2](https://gatepay.io/assets/img/pay_any2.png)
+
 
 
 
