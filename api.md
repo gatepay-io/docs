@@ -274,7 +274,7 @@ order: 3
 | custom | string | 否 | 联系方式（用户名，邮箱，手机号之类的都可以） |
 | price | string | 否 | 金额 |
 | skin | int | 否 | 0：默认模板，1：模板1 |
-| stable | int | 否 | 是否自定义金额 默认开启，1关闭 |
+| stable | int | 否 | 是否自定义 默认开启，1关闭 |
 
 #### 返回结果表
 | 数据 | 说明 |
@@ -283,16 +283,22 @@ order: 3
 
 #### 生成您的快捷付款页
 ```
-http://gatepay.io/pay/any?appkey=后台自动生成的Appkey秘钥&price=收款金额&custom联系方式&skin=模板选择&token=您后台设置的token
+http://gatepay.io/pay/any?appkey=后台自动生成的Appkey秘钥&price=收款金额&custom=联系方式&skin=模板选择&token=您后台设置的token
 ```
-具体参数描述，可以参看上方请求参数表
+具体参数及描述，可以参看上方请求参数表
 
-#### 示例
-https://gatepay.io/pay/any?appkey=e3d704f3542b44a621ebed70dc0efe13&price=1.88&custom=lsq&skin=1&token=qflknfokn
+#### 示例1 两个必要参数
+https://gatepay.io/pay/any?appkey=e3d704f3542b44a621ebed70dc0efe13&token=qflknfokn
 
+#### 示例2 给定价格为1.88，不能更改
+https://gatepay.io/pay/any?appkey=e3d704f3542b44a621ebed70dc0efe13&token=qflknfokn&price=1.88&stable=1
+
+#### 示例3 给定联系方式，不能更改,用第二套模板
+https://gatepay.io/pay/any?appkey=e3d704f3542b44a621ebed70dc0efe13&token=qflknfokn&custom=terry&stable=1&skin=1
 
 ![skin1](https://gatepay.io/assets/img/pay_any1.png)
 ![skin2](https://gatepay.io/assets/img/pay_any2.png)
+
 
 
 
