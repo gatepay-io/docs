@@ -270,10 +270,11 @@ order: 3
 | 名称 | 类型 | 必选 | 描述 |
 | ---- | --- | ---- | --- |
 | appkey | string | 是 | 秘钥 |
-| price | string | 是 | 金额 |
-| custom | string | 是 | 联系方式（用户名，邮箱，手机号之类的都可以） |
-| skin | string | 是 | 模板（暂时有1和2） |
 | token | string | 是 | 快捷收款令牌 |
+| custom | string | 否 | 联系方式（用户名，邮箱，手机号之类的都可以） |
+| price | string | 否 | 金额 |
+| skin | int | 否 | 0：默认模板，1：模板1 |
+| stable | int | 否 | 是否自定义金额 默认开启，1关闭 |
 
 #### 返回结果表
 | 数据 | 说明 |
