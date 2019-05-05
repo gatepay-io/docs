@@ -228,7 +228,79 @@ order: 3
 }
 ```
 
+## 组合商品支付接口
+#### 接口概要
+| 接口名称 | 组合商品支付接口 |
+| ------- | --------------- |
+| 接口URL | https://gatepay.io/api/grouppay/create |
+| 请求方式 | POST |
+| 返回格式 | JSON |
 
+#### 请求参数表
+| 名称         | 类型        | 必选     |  描述                                               |
+| ------------ | ---------- | -------- | -------------------------------------------------- |
+| appkey       | string     | 是       | 秘钥                                                |
+| fields       | string     | 是       | 支付模式信息（商品ID:购买件数 可用逗号隔开购买多种商品 示例：8:1,7:1 ） |
+| type         | string     | 是       | 支付方式：wechat（微信）、alipay（支付宝）            |
+| out_order_id | string     | 是       | 外部订单编号                                        |
+| custom       | string     | 是       | 自定义信息:可以是用户的属性之类如用户ID,邮箱           |
+| sign         | string     | 是       | 签名信息算法：sign = md5（md5（appkey + fields + type + out_order_id + custom）+appsecret）|
+
+#### 返回结果表
+| 数据 | 说明 |
+| ---- | --- |
+| code | 状态码 |
+| msg  | 状态描述 |
+| time | 响应时间戳 |
+| data | 业务结果集 |
+| data.pay_url | 创建的支付地址 |
+| data.qrcode_url | 二维码地址 |
+| data.qrcode_body | 二维码图像 |
+| data.params | 请求的参数 |
+
+#### 状态码表
+| 状态码 | 描述         |
+|-----|------------|
+| 101 | 秘钥必须       |
+| 102 | 无效的秘钥      |
+| 103 | 秘钥已过期      |
+| 103 | 签名必须       |
+| 104 | 无效的签名      |
+| 105 | 参数缺失       |
+| 106 | 存在禁止传递的参数  |
+| 107 | api已关闭     |
+| 108 | 回调接口url未填写 |
+| 109 | 通知接口url未填写 |
+| 110 | 套餐已超额      |
+| 199 | 未知错误       |
+| 201 | 无效的支付方式    |
+| 202 | 当前支付方式已关闭  |
+| 203 | 无可用支付方式    |
+| 204 | 组合内无有效库存商品 |
+| 205 | 分类创建错误     |
+| 206 | 产品创建错误     |
+| 207 | 库存创建错误     |
+| 208 | 队列创建错误     |
+
+#### 成功返回的结果例子
+```
+{
+  "code": 100,
+  "msg": "请求成功",
+  "time": "1556777605",
+  "data": {
+    "pay_url": "https://gatepay.io/pay/api?id=af396965-c05a-48b2-8d03-81020dddcb7c&amp;type=wechat",
+    "qrcode_url": "https://gatepay.io/qrcode/build?size=130&amp;text=https%3A%2F%2Fgatepay.io%2Fpay%2Fapi%3Fid%3Daf396965-c05a-48b2-8d03-81020dddcb7c%26type%3Dwechat",
+    "qrcode_body": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgAQMAAACxAfVuAAAABlBMVEX///8AAABVwtN+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB+klEQVRIie2WMY7sIAyGf0RBN1wg2lwjxUhcKWW60KXMlZBSzDWIcgGmo0D4mc3saF+XDCnXDeKLRGz8Yxv4s49NEGX5oGyi2B6BiOw56HCDsW0CbRQ81BVwoZskS4m/qbDS9AF0PR+mk7HXQXQ6Q4mNPoAcZgO0bsjtf7HXQE5H0/XrMt14+ZWjY7CYfMyCInkVfgmiAori4GP2wJNo/joNiQSTLzPdeJffYdZASJtlhEgDZNTkxnOQsymSIj6Mtse8pt3POggTWezkjc2t0/6+//0wFAmhdf1KEQ10ltMlcMy842/ad5oWOg35zDHfVUkqqxUXwGWi8hNJvPRcdM5BmAnoei4sOnV6fWm+Et55Z2ZabJAO63IWsrokzd5MoTFBLLufdVA4lSVfnbRP4qS64RzkMPnVBMiJ/ezzj+qq4J6O/R05vEv6YZgU2ljEHkq02J2vg3xvbDOgnpsD68yegnx1QXLHSyM3htEbugDy09a+rEpT7H+K1WEo3FhUUJ4Mh8kP6AIIDHr7drDUK6JddScg0Jh5Xb4Fxnmw9bB0LqiZSzNKf385fxxy32z5zsz09OjFfvG1sPR3U8Yfjnuk9J5YjsMG3IQnLulo04BrIAx30aEMQ+2rJh+HZQaDXpf43CJXYeACWEYOZVuK7Ofo8c5RBfyzD+0f5HRQOvNTHzgAAAAASUVORK5CYII=",
+    "params": {
+      "fields": "8:2,7:3,10:1",
+      "type": "wechat",
+      "out_order_id": "2d5fdb06-ee8e-43ed-bdc7-f6818e68c042",
+      "custom": "terry"
+    }
+  }
+}
+```
 
 
 
