@@ -228,6 +228,69 @@ order: 3
 }
 ```
 
+## 付款结果查询接口
+#### 接口概要
+| 接口名称 | 付款结果查询接口 |
+| ------- | ----------- |
+| 接口URL | https://gatepay.io/api/find/findOrder |
+| 请求方式 | GET |
+| 返回格式 | JSON |
+
+#### 请求参数表
+| 名称 | 类型 | 必选 | 描述 |
+| ---- | --- | ---- | --- |
+| appkey | string | 是 | 秘钥 |
+| out_order_id | string | 是 | 外部订单编号 |
+| sign | string | 是 | 签名信息算法：sign = md5(md5(appkey + out_order_id) + appsecret) |
+
+#### 返回结果表
+| 数据 | 说明 |
+| ---- | --- |
+| code | 状态码 |
+| msg  | 状态描述 |
+| time | 响应时间戳 |
+| data | 业务结果集 |
+| data.order_id | 订单编号 |
+| data.order_title | 订单标题 |
+| data.order_price | 订单金额 |
+| data.order_type | 支付类型 |
+| data.order_status | 交易状态 |
+
+#### 状态码表
+| 状态码 | 描述         |
+|-----|------------|
+| 101 | 秘钥必须       |
+| 102 | 无效的秘钥      |
+| 103 | 秘钥已过期      |
+| 103 | 签名必须       |
+| 104 | 无效的签名      |
+| 105 | 参数缺失       |
+| 106 | 存在禁止传递的参数  |
+| 107 | api已关闭     |
+| 108 | 回调接口url未填写 |
+| 109 | 通知接口url未填写 |
+| 110 | 套餐已超额      |
+| 199 | 未知错误       |
+| 201 | 订单不存在    |
+
+#### 成功返回的结果例子
+```
+{
+  "code": 100,
+  "msg": "请求成功",
+  "time": "1557056209",
+  "data": {
+    "order_id": 522,
+    "order_title": "任意金额支付:1.88元",
+    "order_price": "1.88",
+    "order_type": "alipay",
+    "order_status": "expired"
+  }
+}
+
+```
+
+
 
 
 ## 支付成功通知接口
