@@ -232,7 +232,7 @@
 #### 接口概要
 | 接口名称 | 付款结果查询接口 |
 | ------- | --------------- |
-| 接口URL | https://gatepay.io/api/find/findOrder |
+| 接口URL | https://gatepay.io/api/order/check |
 | 请求方式 | GET |
 | 返回格式 | JSON |
 
