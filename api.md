@@ -229,20 +229,23 @@ order: 3
 ```
 
 
-## 付款结果查询接口
+## 任意金额支付接口
 #### 接口概要
-| 接口名称 | 付款结果查询接口 |
-| ------- | ----------- |
-| 接口URL | https://gatepay.io/api/find/findOrder |
-| 请求方式 | GET |
+| 接口名称 | 任意金额支付接口 |
+| ------- | --------------- |
+| 接口URL | https://gatepay.io/api/anypay/create |
+| 请求方式 | POST |
 | 返回格式 | JSON |
 
 #### 请求参数表
-| 名称 | 类型 | 必选 | 描述 |
-| ---- | --- | ---- | --- |
-| appkey | string | 是 | 秘钥 |
-| out_order_id | string | 是 | 外部订单编号 |
-| sign | string | 是 | 签名信息算法：sign = md5(md5(appkey + out_order_id) + appsecret) |
+| 名称         | 类型        | 必选     |  描述                                               |
+| ------------ | ---------- | -------- | -------------------------------------------------- |
+| appkey       | string     | 是       | 秘钥                                                |
+| price        | float      | 是       | 商品价格，任意金额都可以（精确小数点后2位 示例：10.23） |
+| type         | string     | 是       | 支付方式：wechat（微信）、alipay（支付宝）            |
+| out_order_id | string     | 是       | 外部订单编号                                        |
+| custom       | string     | 是       | 自定义信息:可以是用户的属性之类如用户ID,邮箱           |
+| sign         | string     | 是       | 签名信息算法：sign = md5（md5（appkey + price + type + out_order_id + custom）+appsecret）|
 
 #### 返回结果表
 | 数据 | 说明 |
@@ -251,11 +254,10 @@ order: 3
 | msg  | 状态描述 |
 | time | 响应时间戳 |
 | data | 业务结果集 |
-| data.order_id | 订单编号 |
-| data.order_title | 订单标题 |
-| data.order_price | 订单金额 |
-| data.order_type | 支付类型 |
-| data.order_status | 交易状态 |
+| data.pay_url | 创建的支付地址 |
+| data.qrcode_url | 二维码地址 |
+| data.qrcode_body | 二维码图像 |
+| data.params | 请求的参数 |
 
 #### 状态码表
 | 状态码 | 描述         |
@@ -272,23 +274,36 @@ order: 3
 | 109 | 通知接口url未填写 |
 | 110 | 套餐已超额      |
 | 199 | 未知错误       |
-| 201 | 订单不存在    |
+| 201 | 价格无效       |
+| 202 | 无效的支付方式    |
+| 203 | 当前支付方式已关闭  |
+| 204 | 无可用支付方式    |
+| 205 | 分类创建错误     |
+| 206 | 产品创建错误     |
+| 207 | 库存创建错误     |
+| 208 | 队列创建错误     |
 
 #### 成功返回的结果例子
 ```
 {
-  "code": 100,
-  "msg": "请求成功",
-  "time": "1557056209",
-  "data": {
-    "order_id": 522,
-    "order_title": "任意金额支付:1.88元",
-    "order_price": "1.88",
-    "order_type": "alipay",
-    "order_status": "expired"
-  }
+    "code": 100,
+    "msg": "请求成功",
+    "time": "1556614084",
+    "data": {
+        "pay_url": "https:\/\/gatepay.io\/pay\/api?id=5cc75a6a0b418&type=wechat",
+        "api_url": "https:\/\/gatepay.io\/pay\/api?id=5cc75a6a0b418&type=wechat&format=json",
+        "qrcode_url": "https:\/\/gatepay.io\/qrcode\/buildsize=130&text=https%3A%2F%2Fgatepay.io%2Fpay%2Fapi%3Fid%3D5cc75a6a0b418%26type%3Dwechat",
+        "qrcode_body": "data:image\/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgAQMAAACxAfVuAAAABlBMVEX\/\/\/8AAABVwtN+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABg0lEQVRIie2WMY7EIAxFHVH4Ukhciw46roXkS1Egeb8hkWa73eByXETK0yh4Pt8fiL71ui5VlUkxVCqV8VL\/BzsF6TF1HtxaJfaAoiI96eRRWmvanGAPPcjgQewHRXSmNiCIE4Qg6F1Ud+fsAW3jrJrV526+h6sCdg6dj1+Geg8vdK6msgJlKFI9YCSKFCOPnIl10DkkCAyFZ9I28rNxh\/CywdIZg\/WO7tUBkmnR0yTMa2k2tecQIttohZ6pQI39w0MIebEQnrnAto8fziCGCyiJYIU7W87hBJAZYQlY4R6Dv0N0GE3NiDZh+\/3NUxhmsviMGX9eR3GBtkqaMdnbY6VDeK2g6zEsiHKAlh+Qw84OeKncqx9CWEksRJDIYDtDTmHaUwR\/Wnr6wLAMGrrNJnaOPeDiOI0z1\/KZywdwnR3dDFbWYVw9oN0ZrFaA8Mc95ADus1hkWDBpLV5w5TIEHrmoE8QtZMayTNtcoN0ZwlxBN1h94Loz7KMYk3Bn8hn81sv6AcQJdFCohA5NAAAAAElFTkSuQmCC",
+        "params": {
+            "appkey": "098f6bcd4621d373cade4e832627b4f6",
+            "price": "0.82",
+            "type": "wechat",
+            "out_order_id": "5cc75a6a0b418",
+            "custom": "terry",
+            "sign": "45f46863f10965c0f0671fb738efb13e",
+        }
+    }
 }
-
 ```
 
 
