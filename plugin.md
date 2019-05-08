@@ -15,7 +15,7 @@ order: 5
 ### Zblog 付费阅读插件
 
 ### DedeCms 收款插件
-(https://gatepay.gatecdn.com/assets/img/plugin/dede.png)
+[dedecms](https://gatepay.gatecdn.com/assets/img/plugin/dede.png)
 
 ### Discuz VIP用户组开通插件
 
