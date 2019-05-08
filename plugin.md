@@ -25,6 +25,11 @@ order: 5
 
 ![dedecms](https://gatepay.gatecdn.com/assets/img/plugin/dede2.png)
 
+![dedecms](https://gatepay.gatecdn.com/assets/img/plugin/dede3.png)
+
+![dedecms](https://gatepay.gatecdn.com/assets/img/plugin/dede4.png)
+
+![dedecms](https://gatepay.gatecdn.com/assets/img/plugin/dede5.png)
 
 ### Discuz VIP用户组开通插件
 
