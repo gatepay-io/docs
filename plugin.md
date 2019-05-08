@@ -23,6 +23,7 @@ order: 5
 4. 安装界面可以查看目录是否具有写入权限，需要写入权限才能保证插件的正确安装
 5. ‘对于已存在文件处理方法’，请选择‘覆盖’，点击确定即可完成插件的安装
 
+![dedecms](https://gatepay.gatecdn.com/assets/img/plugin/dede2.png)
 
 
 ### Discuz VIP用户组开通插件
