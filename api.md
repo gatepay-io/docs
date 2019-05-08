@@ -20,6 +20,8 @@
 | out_order_id | string     | 是       | 外部订单编号                                        |
 | custom       | string     | 是       | 自定义信息:可以是用户的属性之类如用户ID,邮箱           |
 | sign         | string     | 是       | 签名信息算法：sign = md5（md5（appkey + price + type + out_order_id + custom）+appsecret）|
+| notify_url   | string     | 否       | 异步通知地址                                        |
+| return_url   | string     | 否       | 同步通知地址                                        |
 
 #### 返回结果表
 | 数据 | 说明 |
@@ -97,6 +99,8 @@
 | out_order_id | string     | 是       | 外部订单编号                                        |
 | custom       | string     | 是       | 自定义信息:可以是用户的属性之类如用户ID,邮箱           |
 | sign         | string     | 是       | 签名信息算法：sign = md5（md5（appkey + fields + type + out_order_id + custom）+appsecret）|
+| notify_url   | string     | 否       | 异步通知地址                                        |
+| return_url   | string     | 否       | 同步通知地址                                        |
 
 #### 返回结果表
 | 数据 | 说明 |
@@ -172,6 +176,8 @@
 | out_order_id | string     | 是       | 外部订单编号                                        |
 | custom       | string     | 是       | 自定义信息:可以是用户的属性之类如用户ID,邮箱           |
 | sign         | string     | 是       | 签名信息算法：sign = md5（md5（appkey + product_id + type + out_order_id + custom）+appsecret）|
+| notify_url   | string     | 否       | 异步通知地址                                        |
+| return_url   | string     | 否       | 同步通知地址                                        |
 
 #### 返回结果表
 | 数据 | 说明 |
