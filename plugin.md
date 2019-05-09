@@ -41,9 +41,8 @@ order: 5
 3. 点击Gatepay积分充值插件的设置按钮 ，只需要设置好`Gatepay appkey` 和 `Gatepay appsecret`就可以提交保存，正常使用了
 
 ![discuz](https://gatepay.gatecdn.com/assets/img/plugin/discuz2.png)
-![discuz](https://gatepay.gatecdn.com/assets/img/plugin/discuz3.png)
-![discuz](https://gatepay.gatecdn.com/assets/img/plugin/discuz4.png)
-![discuz](https://gatepay.gatecdn.com/assets/img/plugin/discuz5.png)
+<img src="https://gatepay.gatecdn.com/assets/img/plugin/discuz3.png" width="400px" alt="discuz">
+<img src="https://gatepay.gatecdn.com/assets/img/plugin/discuz4.png" width="400px" alt="discuz">
 
 ### 帝国CMS 支付插件
 
