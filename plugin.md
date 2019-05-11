@@ -32,6 +32,16 @@ order: 5
 ![dedecms](https://gatepay.gatecdn.com/assets/img/plugin/dede5.png)
 
 ### Discuz VIP用户组开通插件
+![discuz](https://gatepay.gatecdn.com/assets/img/plugin/discuz_vip1.png)
+
+1. 找到discuz源文件地址，打开 `source\plugin`， 将插件文件下载到此处
+2. 登录discuz后台，点击 管理中心=》应用=》插件 ，在最下方“未安装的插件”中找到“Gatepay积分充值”，点击安装=》启用
+3. 点击Gatepay积分充值插件的设置按钮 ，设置好`Gatepay appkey` 和 `Gatepay appsecret`
+4. 按规范填写`开放购买用户组设置`，如果是新的用户组需要在用户组里设置权限
+
+![discuz](https://gatepay.gatecdn.com/assets/img/plugin/discuz_vip2.png)
+![discuz](https://gatepay.gatecdn.com/assets/img/plugin/discuz_vip3.png)
+![discuz](https://gatepay.gatecdn.com/assets/img/plugin/discuz_vip4.png)
 
 ### Discuz 用户充值插件
 ![discuz](https://gatepay.gatecdn.com/assets/img/plugin/discuz1.png)
