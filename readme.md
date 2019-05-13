@@ -47,6 +47,11 @@ order: 1
 ## **Android App截图**
 ![控制台](https://gatepay.gatecdn.com/assets/img/app.jpg "控制台")
 
+## **微信挂机软件截图**
+![微信挂机软件](https://gatepay.gatecdn.com/assets/img/wechat_clientx.png)
+
+## **支付宝挂机软件截图**
+![支付宝挂机软件](https://gatepay.gatecdn.com/assets/img/alipay_clientx.png)
 
 ## **版权信息**
 
