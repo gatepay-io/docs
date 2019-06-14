@@ -110,7 +110,6 @@
 | data | 业务结果集 |
 | data.pay_url | 创建的支付地址 |
 | data.qrcode_url | 二维码地址 |
-| data.qrcode_body | 二维码图像 |
 | data.params | 请求的参数 |
 
 #### 状态码表
@@ -147,7 +146,6 @@
     "data": {
         "pay_url": "https:\/\/gatepay.io\/pay\/api?id=5cc75a6a0b418&type=wechat",
         "qrcode_url": "https:\/\/gatepay.io\/qrcode\/buildsize=130&text=https%3A%2F%2Fgatepay.io%2Fpay%2Fapi%3Fid%3D5cc75a6a0b418%26type%3Dwechat",
-        "qrcode_body": "data:image\/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgAQMAAACxAfVuAAAABlBMVEX\/\/\/8AAABVwtN+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABg0lEQVRIie2WMY7EIAxFHVH4Ukhciw46roXkS1Egeb8hkWa73eByXETK0yh4Pt8fiL71ui5VlUkxVCqV8VL\/BzsF6TF1HtxaJfaAoiI96eRRWmvanGAPPcjgQewHRXSmNiCIE4Qg6F1Ud+fsAW3jrJrV526+h6sCdg6dj1+Geg8vdK6msgJlKFI9YCSKFCOPnIl10DkkCAyFZ9I28rNxh\/CywdIZg\/WO7tUBkmnR0yTMa2k2tecQIttohZ6pQI39w0MIebEQnrnAto8fziCGCyiJYIU7W87hBJAZYQlY4R6Dv0N0GE3NiDZh+\/3NUxhmsviMGX9eR3GBtkqaMdnbY6VDeK2g6zEsiHKAlh+Qw84OeKncqx9CWEksRJDIYDtDTmHaUwR\/Wnr6wLAMGrrNJnaOPeDiOI0z1\/KZywdwnR3dDFbWYVw9oN0ZrFaA8Mc95ADus1hkWDBpLV5w5TIEHrmoE8QtZMayTNtcoN0ZwlxBN1h94Loz7KMYk3Bn8hn81sv6AcQJdFCohA5NAAAAAElFTkSuQmCC",
         "params": {
             "appkey": "098f6bcd4621d373cade4e832627b4f6",
             "price": "0.82",
