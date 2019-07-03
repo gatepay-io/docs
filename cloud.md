@@ -203,3 +203,22 @@
     </tr>
    </tbody>
   </table>
+  
+  
+  
+<h2>2.扫码上线</h2>
+<p>这一步，我们可以在后台的<code>云端管理</code>里<code>云端扫码</code>功能来快速上线你手上的账户。</p>
+<p>如下图所示，点击<code>+</code>开启扫码进程，需要注意的是，成功扫码上线将会扣除相应的<code>上码费</code>(积分)。</p>
+<img src="https://cloud.gatepay.io/assets/teaching/004.png"/><br>
+<p><code>上码费</code>:按每次成功将一个支付宝或者微信上线到云端收费。</p>
+<p><code>积分</code>:积分是本系统内唯一流通的清算货币，100积分=1元(人民币)，请提前联系服务商充值足够的积分。</p>
+<p>云端扫码进程开启后，请耐心等待出码过程</p>
+<img src="https://cloud.gatepay.io/assets/teaching/005.png"/><br>
+<p>生成的二维码是登录支付宝或者微信的官方授权码，请放心使用</p>
+<img src="https://cloud.gatepay.io/assets/teaching/006.png"/><br>
+<p>提示扫码成功后点击菜单栏的在线会话参看上线的账户</p>
+<img src="https://cloud.gatepay.io/assets/teaching/008.png"/><br>
+<p>如果想要重新上线旧的会话，可以切换到离线会话，点击"扫码上线” 实现会话复用。</p>
+<img src="https://cloud.gatepay.io/assets/teaching/007.png"/><br>
+<p><code>什么是会话</code>:会话是一个在云端常驻的虚拟化进程，功能是监控支付宝或者微信账单变化。</p>
+<p>如果你听过或者做过在网上挂QQ之类的业务，类比理解，一个会话等于是挂一个支付宝或者微信账户的在线软件进程。</p>
