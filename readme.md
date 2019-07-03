@@ -54,8 +54,8 @@ order: 1
 ![支付宝挂机软件](https://gatepay.gatecdn.com/assets/img/alipay_clientx.png)
 
 ## **支付宝云端截图**
-![支付宝云端](/assets/img/alipay_cloud1.png)
-![支付宝云端](/assets/img/alipay_cloud2.png)
+![支付宝云端](https://gatepay.io/assets/img/alipay_cloud1.png)
+![支付宝云端](https://gatepay.io/assets/img/alipay_cloud2.png)
 
 ## **版权信息**
 
