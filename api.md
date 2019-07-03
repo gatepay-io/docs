@@ -81,6 +81,81 @@
 }
 ```
 
+## 云端支付接口
+#### 接口概要
+| 接口名称 | 云端支付接口 |
+| ------- | --------------- |
+| 接口URL | https://cloud.gatepay.io/api/cloudpay/create |
+| 请求方式 | POST |
+| 返回格式 | JSON |
+
+#### 请求参数表
+| 名称         | 类型        | 必选     |  描述                                               |
+| ------------ | ---------- | -------- | -------------------------------------------------- |
+| appkey       | string     | 是       | 后台->账户设置->appkey                                                |
+| price        | float      | 是       | 商品价格，任意金额都可以（精确小数点后2位 示例：10.23） |
+| type         | string     | 是       | 支付方式：wechat（微信）、alipay（支付宝）            |
+| out_order_id | string     | 是       | 外部订单编号                                        |
+| custom       | string     | 是       | 自定义信息:可以是用户的属性之类如用户ID,邮箱           |
+| sign         | string     | 是       | 签名信息算法：sign = md5（md5（appkey + price + type + out_order_id + custom）+appsecret）|
+
+#### 返回结果表
+| 数据 | 说明 |
+| ---- | --- |
+| code | 状态码 |
+| msg  | 状态描述 |
+| time | 响应时间戳 |
+| data | 业务结果集 |
+| data.pay_url | 创建的支付地址 |
+| data.qrcode_url | 二维码地址 |
+| data.params | 请求的参数 |
+
+#### 状态码表
+| 状态码 | 描述         |
+|-----|------------|
+| 101 | 秘钥必须       |
+| 102 | 无效的秘钥      |
+| 103 | 秘钥已过期      |
+| 103 | 签名必须       |
+| 104 | 无效的签名      |
+| 105 | 参数缺失       |
+| 106 | 存在禁止传递的参数  |
+| 107 | api已关闭     |
+| 108 | 回调接口url未填写 |
+| 109 | 通知接口url未填写 |
+| 110 | 套餐已超额      |
+| 199 | 未知错误       |
+| 201 | 价格无效       |
+| 202 | 无效的支付方式    |
+| 203 | 当前支付方式已关闭  |
+| 204 | 无可用支付方式    |
+| 205 | 分类创建错误     |
+| 206 | 产品创建错误     |
+| 207 | 库存创建错误     |
+| 208 | 队列创建错误     |
+| 209 | 非代理用户     |
+
+#### 成功返回的结果例子
+```
+{
+    "code": 100,
+    "msg": "请求成功",
+    "time": "1556614084",
+    "data": {
+        "pay_url": "https://cloud.gatepay.io\/pay\/api?id=5cc75a6a0b418&type=alipay",
+        "qrcode_url": "https://cloud.gatepay.io/qrcode\/buildsize=130&text=https://cloud.gatepay.io%2Fpay%2Fapi%3Fid%3D5cc75a6a0b418%26type%3Dalipay",
+       	"params": {
+            "appkey": "098f6bcd4621d373cade4e832627b4f6",
+            "price": "0.82",
+            "type": "alipay",
+            "out_order_id": "5cc75a6a0b418",
+            "custom": "test_user",
+            "sign": "45f46863f10965c0f0671fb738efb13e",
+        }
+    }
+}
+```
+
 
 ## 组合商品支付接口
 #### 接口概要
