@@ -1,205 +1,44 @@
-<p>&lt;h2&gt;1.配置回调&lt;/h2&gt;
-&lt;p&gt;在集成支付到你的系统之前，第一步要做的事情就是配置回调地址。&lt;/p&gt;
-&lt;p&gt;回调地址分为三种，分别是&lt;code&gt;同步回调地址&lt;/code&gt;，&lt;code&gt;异步回调地址&lt;/code&gt;，&lt;code&gt;支付超时地址&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;在后台的&quot;账户配置&quot;里分别填写，其中同步回调地址，异步回调地址是&lt;code&gt;必填&lt;/code&gt;选项，支付超时地址是&lt;code&gt;选填&lt;/code&gt;。&lt;/p&gt;
-&lt;img src=&quot;/assets/teaching/001.png&quot;/&gt;
-&lt;p&gt;他们的含义分别是：&lt;/p&gt;
-&lt;p&gt;1.异步回调地址:如果云端检测到订单已支付，云端的推送网络会往你填写的地址发送一次post请求，将订单信息推送过去。&lt;/p&gt;
-&lt;p&gt;2.同步回调地址:如果异步回调地址返回&quot;success&quot;,则支付页面会执行网页跳转，跳转到你填写的这个地址。&lt;/p&gt;
-&lt;p&gt;3.支付超时地址:如果支付没有到账，或者用户没有支付，订单因为超时而关闭后跳转的地址。&lt;/p&gt;
-&lt;h3&gt;完整接入流程图&lt;/h3&gt;
-&lt;img src=&quot;/assets/teaching/002.png&quot;/&gt;
-&lt;br&gt;</p>
-
-<p>  &lt;h2 id=&quot;支付成功异步通知接口-5&quot;&gt;支付成功异步通知接口&lt;/h2&gt;
-  &lt;h4 id=&quot;接口概要-21&quot;&gt;接口概要&lt;/h4&gt;
-  &lt;table&gt;
-   &lt;thead&gt;
-    &lt;tr&gt;
-     &lt;th&gt;接口名称&lt;/th&gt;
-     &lt;th&gt;支付成功通知接口&lt;/th&gt;
-    &lt;/tr&gt;
-   &lt;/thead&gt;
-   &lt;tbody&gt;
-    &lt;tr&gt;
-     &lt;td&gt;接口URL&lt;/td&gt;
-     &lt;td&gt;管理后台-&amp;gt;账户配置-&amp;gt;支付成功回调URL&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-     &lt;td&gt;请求方式&lt;/td&gt;
-     &lt;td&gt;POST&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-     &lt;td&gt;返回格式&lt;/td&gt;
-     &lt;td&gt;html&lt;/td&gt;
-    &lt;/tr&gt;
-   &lt;/tbody&gt;
-  &lt;/table&gt;
-  &lt;h4 id=&quot;请求参数表-22&quot;&gt;请求参数表&lt;/h4&gt;
-  &lt;table&gt;
-   &lt;thead&gt;
-    &lt;tr&gt;
-     &lt;th&gt;名称&lt;/th&gt;
-     &lt;th&gt;类型&lt;/th&gt;
-     &lt;th&gt;必选&lt;/th&gt;
-     &lt;th&gt;描述&lt;/th&gt;
-    &lt;/tr&gt;
-   &lt;/thead&gt;
-   &lt;tbody&gt;
-    &lt;tr&gt;
-     &lt;td&gt;order<em>id&lt;/td&gt;
-     &lt;td&gt;integer&lt;/td&gt;
-     &lt;td&gt;是&lt;/td&gt;
-     &lt;td&gt;订单编号&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-     &lt;td&gt;out</em>order<em>id&lt;/td&gt;
-     &lt;td&gt;string&lt;/td&gt;
-     &lt;td&gt;是&lt;/td&gt;
-     &lt;td&gt;外部订单编号&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-     &lt;td&gt;price&lt;/td&gt;
-     &lt;td&gt;float&lt;/td&gt;
-     &lt;td&gt;是&lt;/td&gt;
-     &lt;td&gt;订单价格 （精确小数点后2位 示例：10.23）&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-     &lt;td&gt;realprice&lt;/td&gt;
-     &lt;td&gt;float&lt;/td&gt;
-     &lt;td&gt;是&lt;/td&gt;
-     &lt;td&gt;真实价格 （精确小数点后2位 示例：10.23）&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-     &lt;td&gt;type&lt;/td&gt;
-     &lt;td&gt;string&lt;/td&gt;
-     &lt;td&gt;是&lt;/td&gt;
-     &lt;td&gt;支付类型&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-     &lt;td&gt;paytime&lt;/td&gt;
-     &lt;td&gt;integer&lt;/td&gt;
-     &lt;td&gt;是&lt;/td&gt;
-     &lt;td&gt;支付时间&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-     &lt;td&gt;extend&lt;/td&gt;
-     &lt;td&gt;string&lt;/td&gt;
-     &lt;td&gt;是&lt;/td&gt;
-     &lt;td&gt;联系方式&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-     &lt;td&gt;sign&lt;/td&gt;
-     &lt;td&gt;string&lt;/td&gt;
-     &lt;td&gt;是&lt;/td&gt;
-     &lt;td&gt;签名信息算法：sign = md5(md5(appkey + order</em>id + out<em>order</em>id + price + realprice + type + paytime + extend) + appsecret)&lt;/td&gt;
-    &lt;/tr&gt;
-   &lt;/tbody&gt;
-  &lt;/table&gt;
-  &lt;h4 id=&quot;返回结果表-23&quot;&gt;返回结果表&lt;/h4&gt;
-  &lt;table&gt;
-   &lt;thead&gt;
-    &lt;tr&gt;
-     &lt;th&gt;数据&lt;/th&gt;
-     &lt;th&gt;说明&lt;/th&gt;
-    &lt;/tr&gt;
-   &lt;/thead&gt;
-   &lt;tbody&gt;
-    &lt;tr&gt;
-     &lt;td&gt;success&lt;/td&gt;
-     &lt;td&gt;回调成功&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-     &lt;td&gt;fail&lt;/td&gt;
-     &lt;td&gt;回调失败&lt;/td&gt;
-    &lt;/tr&gt;
-   &lt;/tbody&gt;
-  &lt;/table&gt;
-  &lt;h2 id=&quot;支付成功同步通知接口-6&quot;&gt;支付成功同步通知接口&lt;/h2&gt;
-  &lt;h4 id=&quot;接口概要-24&quot;&gt;接口概要&lt;/h4&gt;
-  &lt;table&gt;
-   &lt;thead&gt;
-    &lt;tr&gt;
-     &lt;th&gt;接口名称&lt;/th&gt;
-     &lt;th&gt;支付成功通知接口&lt;/th&gt;
-    &lt;/tr&gt;
-   &lt;/thead&gt;
-   &lt;tbody&gt;
-    &lt;tr&gt;
-     &lt;td&gt;接口URL&lt;/td&gt;
-     &lt;td&gt;管理后台-&amp;gt;账户配置-&amp;gt;支付成功后前台跳转地址&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-     &lt;td&gt;请求方式&lt;/td&gt;
-     &lt;td&gt;GET&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-     &lt;td&gt;返回格式&lt;/td&gt;
-     &lt;td&gt;html&lt;/td&gt;
-    &lt;/tr&gt;
-   &lt;/tbody&gt;
-  &lt;/table&gt;
-  &lt;h4 id=&quot;请求参数表-25&quot;&gt;请求参数表&lt;/h4&gt;
-  &lt;table&gt;
-   &lt;thead&gt;
-    &lt;tr&gt;
-     &lt;th&gt;名称&lt;/th&gt;
-     &lt;th&gt;类型&lt;/th&gt;
-     &lt;th&gt;必选&lt;/th&gt;
-     &lt;th&gt;描述&lt;/th&gt;
-    &lt;/tr&gt;
-   &lt;/thead&gt;
-   &lt;tbody&gt;
-    &lt;tr&gt;
-     &lt;td&gt;price&lt;/td&gt;
-     &lt;td&gt;float&lt;/td&gt;
-     &lt;td&gt;是&lt;/td&gt;
-     &lt;td&gt;订单价格 （精确小数点后2位 示例：10.23）&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-     &lt;td&gt;type&lt;/td&gt;
-     &lt;td&gt;string&lt;/td&gt;
-     &lt;td&gt;是&lt;/td&gt;
-     &lt;td&gt;支付类型&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-     &lt;td&gt;product<em>id&lt;/td&gt;
-     &lt;td&gt;string&lt;/td&gt;
-     &lt;td&gt;是&lt;/td&gt;
-     &lt;td&gt;产品ID&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-     &lt;td&gt;order</em>id&lt;/td&gt;
-     &lt;td&gt;integer&lt;/td&gt;
-     &lt;td&gt;是&lt;/td&gt;
-     &lt;td&gt;订单编号&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-     &lt;td&gt;out<em>order</em>id&lt;/td&gt;
-     &lt;td&gt;string&lt;/td&gt;
-     &lt;td&gt;是&lt;/td&gt;
-     &lt;td&gt;外部订单编号&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-     &lt;td&gt;sign&lt;/td&gt;
-     &lt;td&gt;string&lt;/td&gt;
-     &lt;td&gt;是&lt;/td&gt;
-     &lt;td&gt;签名信息算法：sign = md5(md5(appkey + price + type + prodcut<em>id + order</em>id + out<em>order</em>id) + appsecret)&lt;/td&gt;
-    &lt;/tr&gt;
-   &lt;/tbody&gt;
-  &lt;/table&gt;
-  &lt;h4 id=&quot;返回结果表-26&quot;&gt;返回结果表&lt;/h4&gt;
-  &lt;table&gt;
-   &lt;thead&gt;
-    &lt;tr&gt;
-     &lt;th&gt;数据&lt;/th&gt;
-     &lt;th&gt;说明&lt;/th&gt;
-    &lt;/tr&gt;
-   &lt;/thead&gt;
-   &lt;tbody&gt;
-    &lt;tr&gt;
-     &lt;td&gt;html&lt;/td&gt;
-     &lt;td&gt;地址&lt;/td&gt;
-    &lt;/tr&gt;
-   &lt;/tbody&gt;
-  &lt;/table&gt;</p>
+  <table>
+    <tr>
+     <th>名称</th>
+     <th>类型</th>
+     <th>必选</th>
+     <th>描述</th>
+    </tr>
+    <tr>
+     <td>price</td>
+     <td>float</td>
+     <td>是</td>
+     <td>订单价格 （精确小数点后2位 示例：10.23）</td>
+    </tr>
+    <tr>
+     <td>type</td>
+     <td>string</td>
+     <td>是</td>
+     <td>支付类型</td>
+    </tr>
+    <tr>
+     <td>product_id</td>
+     <td>string</td>
+     <td>是</td>
+     <td>产品ID</td>
+    </tr>
+    <tr>
+     <td>order_id</td>
+     <td>integer</td>
+     <td>是</td>
+     <td>订单编号</td>
+    </tr>
+    <tr>
+     <td>out_order_id</td>
+     <td>string</td>
+     <td>是</td>
+     <td>外部订单编号</td>
+    </tr>
+    <tr>
+     <td>sign</td>
+     <td>string</td>
+     <td>是</td>
+     <td>签名信息算法：sign = md5(md5(appkey + price + type + prodcut_id + order_id + out_order_id) + appsecret)</td>
+    </tr>
+  </table>
