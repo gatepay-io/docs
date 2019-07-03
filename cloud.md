@@ -24,203 +24,64 @@
 
 #### 接口概要
 
-  <table>
-   <thead>
-    <tr>
-     <th>接口名称</th>
-     <th>支付成功通知接口</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>接口URL</td>
-     <td>管理后台-&gt;账户配置-&gt;支付成功回调URL</td>
-    </tr>
-    <tr>
-     <td>请求方式</td>
-     <td>POST</td>
-    </tr>
-    <tr>
-     <td>返回格式</td>
-     <td>html</td>
-    </tr>
-   </tbody>
-  </table>
+| 接口名称  | 支付成功通知接口                |
+|-------|-------------------------|
+| 接口URL | 管理后台\->账户配置\->支付成功回调URL |
+| 请求方式  | POST                    |
+| 返回格式  | html                    |
+
 
 #### 请求参数表
 
-  <table>
-   <thead>
-    <tr>
-     <th>名称</th>
-     <th>类型</th>
-     <th>必选</th>
-     <th>描述</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>order_id</td>
-     <td>integer</td>
-     <td>是</td>
-     <td>订单编号</td>
-    </tr>
-    <tr>
-     <td>out_order_id</td>
-     <td>string</td>
-     <td>是</td>
-     <td>外部订单编号</td>
-    </tr>
-    <tr>
-     <td>price</td>
-     <td>float</td>
-     <td>是</td>
-     <td>订单价格 （精确小数点后2位 示例：10.23）</td>
-    </tr>
-    <tr>
-     <td>realprice</td>
-     <td>float</td>
-     <td>是</td>
-     <td>真实价格 （精确小数点后2位 示例：10.23）</td>
-    </tr>
-    <tr>
-     <td>type</td>
-     <td>string</td>
-     <td>是</td>
-     <td>支付类型</td>
-    </tr>
-    <tr>
-     <td>paytime</td>
-     <td>integer</td>
-     <td>是</td>
-     <td>支付时间</td>
-    </tr>
-    <tr>
-     <td>extend</td>
-     <td>string</td>
-     <td>是</td>
-     <td>联系方式</td>
-    </tr>
-    <tr>
-     <td>sign</td>
-     <td>string</td>
-     <td>是</td>
-     <td>签名信息算法：sign = md5(md5(appkey + order_id + out_order_id + price + realprice + type + paytime + extend) + appsecret)</td>
-    </tr>
-   </tbody>
-  </table>
+| 名称             | 类型      | 必选 | 描述                                                                                                                                |
+|----------------|---------|----|-----------------------------------------------------------------------------------------------------------------------------------|
+| order\_id      | integer | 是  | 订单编号                                                                                                                              |
+| out\_order\_id | string  | 是  | 外部订单编号                                                                                                                            |
+| price          | float   | 是  | 订单价格 （精确小数点后2位 示例：10\.23）                                                                                                         |
+| realprice      | float   | 是  | 真实价格 （精确小数点后2位 示例：10\.23）                                                                                                         |
+| type           | string  | 是  | 支付类型                                                                                                                              |
+| paytime        | integer | 是  | 支付时间                                                                                                                              |
+| extend         | string  | 是  | 联系方式                                                                                                                              |
+| sign           | string  | 是  | 签名信息算法：sign = md5\(md5\(appkey \+ order\_id \+ out\_order\_id \+ price \+ realprice \+ type \+ paytime \+ extend\) \+ appsecret\) |
+
 
 #### 返回结果表
 
-  <table>
-   <thead>
-    <tr>
-     <th>数据</th>
-     <th>说明</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>success</td>
-     <td>回调成功</td>
-    </tr>
-    <tr>
-     <td>fail</td>
-     <td>回调失败</td>
-    </tr>
-   </tbody>
-  </table>
+| 数据      | 说明   |
+|---------|------|
+| success | 回调成功 |
+| fail    | 回调失败 |
+
 
 ## 支付成功同步通知接口
 
 #### 接口概要
 
-  <table>
-   <thead>
-    <tr>
-     <th>接口名称</th>
-     <th>支付成功通知接口</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>接口URL</td>
-     <td>管理后台-&gt;账户配置-&gt;支付成功后前台跳转地址</td>
-    </tr>
-    <tr>
-     <td>请求方式</td>
-     <td>GET</td>
-    </tr>
-    <tr>
-     <td>返回格式</td>
-     <td>html</td>
-    </tr>
-   </tbody>
-  </table>
+| 接口名称  | 支付成功通知接口                  |
+|-------|---------------------------|
+| 接口URL | 管理后台\->账户配置\->支付成功后前台跳转地址 |
+| 请求方式  | GET                       |
+| 返回格式  | html                      |
+
 
 #### 请求参数表
 
-  <table>
-   <thead>
-    <tr>
-     <th>名称</th>
-     <th>类型</th>
-     <th>必选</th>
-     <th>描述</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>price</td>
-     <td>float</td>
-     <td>是</td>
-     <td>订单价格 （精确小数点后2位 示例：10.23）</td>
-    </tr>
-    <tr>
-     <td>type</td>
-     <td>string</td>
-     <td>是</td>
-     <td>支付类型</td>
-    </tr>
-    <tr>
-     <td>product_id</td>
-     <td>string</td>
-     <td>是</td>
-     <td>产品ID</td>
-    </tr>
-    <tr>
-     <td>order_id</td>
-     <td>integer</td>
-     <td>是</td>
-     <td>订单编号</td>
-    </tr>
-    <tr>
-     <td>out_order_id</td>
-     <td>string</td>
-     <td>是</td>
-     <td>外部订单编号</td>
-    </tr>
-    <tr>
-     <td>sign</td>
-     <td>string</td>
-     <td>是</td>
-     <td>签名信息算法：sign = md5(md5(appkey + price + type + prodcut_id + order_id + out_order_id) + appsecret)</td>
-    </tr>
-   </tbody>
-  </table>
+| 名称             | 类型      | 必选 | 描述                                                                                                             |
+|----------------|---------|----|----------------------------------------------------------------------------------------------------------------|
+| price          | float   | 是  | 订单价格 （精确小数点后2位 示例：10\.23）                                                                                      |
+| type           | string  | 是  | 支付类型                                                                                                           |
+| product\_id    | string  | 是  | 产品ID                                                                                                           |
+| order\_id      | integer | 是  | 订单编号                                                                                                           |
+| out\_order\_id | string  | 是  | 外部订单编号                                                                                                         |
+| sign           | string  | 是  | 签名信息算法：sign = md5\(md5\(appkey \+ price \+ type \+ prodcut\_id \+ order\_id \+ out\_order\_id\) \+ appsecret\) |
+
 
 #### 返回结果表
 
-  <table>
-    <tr>
-     <th>数据</th>
-     <th>说明</th>
-    </tr>
-    <tr>
-     <td>html</td>
-     <td>地址</td>
-    </tr>
-  </table>
+| 数据   | 说明 |
+|------|----|
+| html | 地址 |
+
 
 ## 2.扫码上线
 
