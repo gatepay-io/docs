@@ -20,7 +20,7 @@
 
 ![](https://cloud.gatepay.io/assets/teaching/002.png)
 
-## 支付成功异步通知接口
+### 支付成功异步通知接口
 
 #### 接口概要
 
@@ -53,7 +53,7 @@
 | fail    | 回调失败 |
 
 
-## 支付成功同步通知接口
+### 支付成功同步通知接口
 
 #### 接口概要
 
@@ -76,7 +76,7 @@
 | sign           | string  | 是  | 签名信息算法：sign = md5\(md5\(appkey \+ price \+ type \+ prodcut\_id \+ order\_id \+ out\_order\_id\) \+ appsecret\) |
 
 
-#### 返回结果表
+##### 返回结果表
 
 | 数据   | 说明 |
 |------|----|
