@@ -1,10 +1,155 @@
+<h2>1.配置回调</h2>
+<p>在集成支付到你的系统之前，第一步要做的事情就是配置回调地址。</p>
+<p>回调地址分为三种，分别是<code>同步回调地址</code>，<code>异步回调地址</code>，<code>支付超时地址</code></p>
+<p>在后台的"账户配置"里分别填写，其中同步回调地址，异步回调地址是<code>必填</code>选项，支付超时地址是<code>选填</code>。</p>
+<img src="/assets/teaching/001.png"/>
+<p>他们的含义分别是：</p>
+<p>1.异步回调地址:如果云端检测到订单已支付，云端的推送网络会往你填写的地址发送一次post请求，将订单信息推送过去。</p>
+<p>2.同步回调地址:如果异步回调地址返回"success",则支付页面会执行网页跳转，跳转到你填写的这个地址。</p>
+<p>3.支付超时地址:如果支付没有到账，或者用户没有支付，订单因为超时而关闭后跳转的地址。</p>
+<h3>完整接入流程图</h3>
+<img src="/assets/teaching/002.png"/>
+<br>
+
+  <h2 id="支付成功异步通知接口-5">支付成功异步通知接口</h2>
+  <h4 id="接口概要-21">接口概要</h4>
   <table>
+   <thead>
+    <tr>
+     <th>接口名称</th>
+     <th>支付成功通知接口</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>接口URL</td>
+     <td>管理后台-&gt;账户配置-&gt;支付成功回调URL</td>
+    </tr>
+    <tr>
+     <td>请求方式</td>
+     <td>POST</td>
+    </tr>
+    <tr>
+     <td>返回格式</td>
+     <td>html</td>
+    </tr>
+   </tbody>
+  </table>
+  <h4 id="请求参数表-22">请求参数表</h4>
+  <table>
+   <thead>
     <tr>
      <th>名称</th>
      <th>类型</th>
      <th>必选</th>
      <th>描述</th>
     </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>order_id</td>
+     <td>integer</td>
+     <td>是</td>
+     <td>订单编号</td>
+    </tr>
+    <tr>
+     <td>out_order_id</td>
+     <td>string</td>
+     <td>是</td>
+     <td>外部订单编号</td>
+    </tr>
+    <tr>
+     <td>price</td>
+     <td>float</td>
+     <td>是</td>
+     <td>订单价格 （精确小数点后2位 示例：10.23）</td>
+    </tr>
+    <tr>
+     <td>realprice</td>
+     <td>float</td>
+     <td>是</td>
+     <td>真实价格 （精确小数点后2位 示例：10.23）</td>
+    </tr>
+    <tr>
+     <td>type</td>
+     <td>string</td>
+     <td>是</td>
+     <td>支付类型</td>
+    </tr>
+    <tr>
+     <td>paytime</td>
+     <td>integer</td>
+     <td>是</td>
+     <td>支付时间</td>
+    </tr>
+    <tr>
+     <td>extend</td>
+     <td>string</td>
+     <td>是</td>
+     <td>联系方式</td>
+    </tr>
+    <tr>
+     <td>sign</td>
+     <td>string</td>
+     <td>是</td>
+     <td>签名信息算法：sign = md5(md5(appkey + order_id + out_order_id + price + realprice + type + paytime + extend) + appsecret)</td>
+    </tr>
+   </tbody>
+  </table>
+  <h4 id="返回结果表-23">返回结果表</h4>
+  <table>
+   <thead>
+    <tr>
+     <th>数据</th>
+     <th>说明</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>success</td>
+     <td>回调成功</td>
+    </tr>
+    <tr>
+     <td>fail</td>
+     <td>回调失败</td>
+    </tr>
+   </tbody>
+  </table>
+  <h2 id="支付成功同步通知接口-6">支付成功同步通知接口</h2>
+  <h4 id="接口概要-24">接口概要</h4>
+  <table>
+   <thead>
+    <tr>
+     <th>接口名称</th>
+     <th>支付成功通知接口</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>接口URL</td>
+     <td>管理后台-&gt;账户配置-&gt;支付成功后前台跳转地址</td>
+    </tr>
+    <tr>
+     <td>请求方式</td>
+     <td>GET</td>
+    </tr>
+    <tr>
+     <td>返回格式</td>
+     <td>html</td>
+    </tr>
+   </tbody>
+  </table>
+  <h4 id="请求参数表-25">请求参数表</h4>
+  <table>
+   <thead>
+    <tr>
+     <th>名称</th>
+     <th>类型</th>
+     <th>必选</th>
+     <th>描述</th>
+    </tr>
+   </thead>
+   <tbody>
     <tr>
      <td>price</td>
      <td>float</td>
@@ -41,4 +186,20 @@
      <td>是</td>
      <td>签名信息算法：sign = md5(md5(appkey + price + type + prodcut_id + order_id + out_order_id) + appsecret)</td>
     </tr>
+   </tbody>
+  </table>
+  <h4 id="返回结果表-26">返回结果表</h4>
+  <table>
+   <thead>
+    <tr>
+     <th>数据</th>
+     <th>说明</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>html</td>
+     <td>地址</td>
+    </tr>
+   </tbody>
   </table>
