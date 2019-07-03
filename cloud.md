@@ -2,13 +2,13 @@
 <p>在集成支付到你的系统之前，第一步要做的事情就是配置回调地址。</p>
 <p>回调地址分为三种，分别是<code>同步回调地址</code>，<code>异步回调地址</code>，<code>支付超时地址</code></p>
 <p>在后台的"账户配置"里分别填写，其中同步回调地址，异步回调地址是<code>必填</code>选项，支付超时地址是<code>选填</code>。</p>
-<img src="https://cloud.gatebe.io/assets/teaching/001.png">
+<img src="https://cloud.gatepay.io/assets/teaching/001.png">
 <p>他们的含义分别是：</p>
 <p>1.异步回调地址:如果云端检测到订单已支付，云端的推送网络会往你填写的地址发送一次post请求，将订单信息推送过去。</p>
 <p>2.同步回调地址:如果异步回调地址返回"success",则支付页面会执行网页跳转，跳转到你填写的这个地址。</p>
 <p>3.支付超时地址:如果支付没有到账，或者用户没有支付，订单因为超时而关闭后跳转的地址。</p>
 <h3>完整接入流程图</h3>
-<img src="https://cloud.gatebe.io/assets/teaching/002.png">
+<img src="https://cloud.gatepay.io/assets/teaching/002.png">
 <br>
 
   <h2 id="支付成功异步通知接口-5">支付成功异步通知接口</h2>
